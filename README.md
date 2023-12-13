@@ -2,6 +2,19 @@
 
 This repo includes the original code from [Lake and Baroni, 2023](https://github.com/brendenlake/MCL) as well as some new scripts which allow one to replicate some of our challenges to their claims.
 
+## Installation
+
+To install, one can use the following code to create a Python environment and install the necessary packages:
+
+```
+python -mvenv env
+source env/bin/activate.sh
+python -m pip install -r requirements.txt
+```
+
+This should install the required packages (including PyTorch) in a couple of minutes at the most.
+Running the different scripts should not take too long around 2 minutes on a computer with a decent GPU, and perhaps up to 10 minutes on a standard desktop.
+
 ## Finding strings
 
 You can use the script `find_weird.sh` to evaluate random strings from the Gold Grammar to find ones with interesting behaviour (e.g. complete or partial failures of generalization (Level 1 or 2 errors)).

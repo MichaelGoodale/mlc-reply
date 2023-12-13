@@ -26,6 +26,10 @@ parser = argparse.ArgumentParser(
 parser.add_argument("-r", "--random", type=int)
 parser.add_argument("-s", "--string")
 parser.add_argument("--n_times_per_triple", type=int, default=10)
+parser.add_argument(
+    "--no_shuffle",
+    action="store_true",
+)
 
 args = parser.parse_args()
 
@@ -42,6 +46,8 @@ elif args.string:
     input_string = args.string
     grammar = get_grammar_miniscan()
     output_string = grammar.apply(input_string)
+    if args.string == "1 thrice 2 thrice":
+        input_string, output_string = ("1 thrice 2 thrice", "1 1 1 2 2 2")
 else:
     print(
         "You need to provide either a specific string or a random seed using -s or -r respectively"
@@ -72,23 +78,34 @@ def generate_example(n, rule_word, held_out_word, gen_color, file_count=0):
     for a, b, c in replacements:
         gen_input = gen_input.replace(a, b)
         gen_output = gen_output.replace(a, c)
-    s = f"""*SUPPORT*
+    rules = [
+        f"IN: {possible_words[1]} OUT: {color[possible_words[1]]}",
+        f"IN: {possible_words[2]} OUT: {color[possible_words[2]]}",
+        f"IN: {possible_words[3]} OUT: {color[possible_words[3]]}",
+        f"IN: {held_out_word} OUT: {color[held_out_word]}",
+        f"IN: {possible_words[2]} {possible_words[4]} {possible_words[3]} OUT: {color[possible_words[3]]} {color[possible_words[2]]}",
+        f"IN: {possible_words[1]} {possible_words[4]} {possible_words[2]} OUT: {color[possible_words[2]]} {color[possible_words[1]]}",
+        f"IN: {possible_words[2]} {rule_word} OUT:{f' {color[possible_words[2]]}'*n}",
+        f"IN: {possible_words[2]} {possible_words[5]} {possible_words[3]} OUT: {color[possible_words[2]]} {color[possible_words[3]]} {color[possible_words[2]]}",
+        f"IN: {possible_words[1]} {rule_word} OUT:{f' {color[possible_words[1]]}'*n}",
+        f"IN: {possible_words[3]} {possible_words[5]} {possible_words[1]} OUT: {color[possible_words[3]]} {color[possible_words[1]]} {color[possible_words[3]]}",
+        f"IN: {possible_words[2]} {rule_word} {possible_words[4]} {possible_words[3]} OUT: {color[possible_words[3]]}{f' {color[possible_words[2]]}'*n}",
+        f"IN: {possible_words[3]} {possible_words[4]} {possible_words[1]} {possible_words[5]} {possible_words[2]} OUT: {color[possible_words[1]]} {color[possible_words[2]]} {color[possible_words[1]]} {color[possible_words[3]]}",
+        f"IN: {possible_words[2]} {possible_words[4]} {possible_words[3]} {rule_word} OUT:{f' {color[possible_words[3]]}'*n} {color[possible_words[2]]}",
+        f"IN: {possible_words[3]} {possible_words[5]} {possible_words[1]} {possible_words[4]} {possible_words[2]} OUT: {color[possible_words[2]]} {color[possible_words[3]]} {color[possible_words[1]]} {color[possible_words[3]]}",
+    ]
+    if not args.no_shuffle:
+        random.shuffle(rules)
+    s = (
+        "*SUPPORT*\n"
+        + "\n".join(rules)
+        + f"""
+
+*QUERY*
 IN: {possible_words[1]} OUT: {color[possible_words[1]]}
 IN: {possible_words[2]} OUT: {color[possible_words[2]]}
 IN: {possible_words[3]} OUT: {color[possible_words[3]]}
 IN: {held_out_word} OUT: {color[held_out_word]}
-IN: {possible_words[2]} {possible_words[4]} {possible_words[3]} OUT: {color[possible_words[3]]} {color[possible_words[2]]}
-IN: {possible_words[1]} {possible_words[4]} {possible_words[2]} OUT: {color[possible_words[2]]} {color[possible_words[1]]}
-IN: {possible_words[2]} {rule_word} OUT:{f' {color[possible_words[2]]}'*n}
-IN: {possible_words[2]} {possible_words[5]} {possible_words[3]} OUT: {color[possible_words[2]]} {color[possible_words[3]]} {color[possible_words[2]]}
-IN: {possible_words[1]} {rule_word} OUT:{f' {color[possible_words[1]]}'*n}
-IN: {possible_words[3]} {possible_words[5]} {possible_words[1]} OUT: {color[possible_words[3]]} {color[possible_words[1]]} {color[possible_words[3]]}
-IN: {possible_words[2]} {rule_word} {possible_words[4]} {possible_words[3]} OUT: {color[possible_words[3]]}{f' {color[possible_words[2]]}'*n}
-IN: {possible_words[3]} {possible_words[4]} {possible_words[1]} {possible_words[5]} {possible_words[2]} OUT: {color[possible_words[1]]} {color[possible_words[2]]} {color[possible_words[1]]} {color[possible_words[3]]}
-IN: {possible_words[2]} {possible_words[4]} {possible_words[3]} {rule_word} OUT:{f' {color[possible_words[3]]}'*n} {color[possible_words[2]]}
-IN: {possible_words[3]} {possible_words[5]} {possible_words[1]} {possible_words[4]} {possible_words[2]} OUT: {color[possible_words[2]]} {color[possible_words[3]]} {color[possible_words[1]]} {color[possible_words[3]]}
-
-*QUERY*
 IN: {gen_input} OUT: {gen_output}
 
 *GRAMMAR*
@@ -100,6 +117,7 @@ u1 {rule_word} ->{f' [u1]'*n}
 u1 {possible_words[5]} u2 -> [u1] [u2] [u1]
 x1 {possible_words[4]} x2 -> [x2] [x1]
 u1 x1 -> [u1] [x1]"""
+    )
     with open(
         f"data_algebraic/val/{file_count}.txt",
         "w",
