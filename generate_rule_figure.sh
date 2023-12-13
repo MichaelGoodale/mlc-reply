@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OUTPUT_STRING="rule_output.txt"
+OUTPUT_STRING="rule_output.csv"
 MODEL=${1:-"net-BIML-algebraic-top.pt"}
 
 if test -f "$OUTPUT_STRING"; then
@@ -14,12 +14,13 @@ if test -f "$OUTPUT_STRING"; then
 fi
 
 rm $OUTPUT_STRING
-for N in {1..12}
+for N in {1..10}
 do
-	echo "$N" >> $OUTPUT_STRING
-	grep -Enr "\-> (\[u1\] ){$N}\$" data_algebraic/train/ | wc -l >> $OUTPUT_STRING
-	python simple.py  "$N" False
-	python eval.py  --max --episode_type few_shot_gold --fn_out_model "$MODEL" --verbose --max_length 15 | tail -2 >> $OUTPUT_STRING
+	FREQ=$(grep -Enr "\-> (\[u1\] ){$N}\$" data_algebraic/train/ | wc -l)
+	python simple.py "$N" False
+	python eval.py  --max --episode_type few_shot_gold --fn_out_model "$MODEL" --verbose --max_length 15 > temp.txt
+	python parse_partial.py temp.txt --n "$N" --frequency "$FREQ" --output $OUTPUT_STRING
+	rm temp.txt
 done
 
 python parse_output.py $OUTPUT_STRING
