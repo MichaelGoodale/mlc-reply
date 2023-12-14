@@ -10,6 +10,7 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument("filename")
 parser.add_argument("-s", "--string", default="1 surround DAX after DAX thrice")
+parser.add_argument("--full_table", action="store_true")
 
 args = parser.parse_args()
 rule_string = args.string.split(" ")
@@ -86,5 +87,14 @@ with open(args.filename) as f:
 evaluations.append(evaluation)
 df = pd.DataFrame(evaluations)
 print(df["generalization"].value_counts())
-print(df.groupby(["colour_h"])["correct"].mean())
-print(df.groupby(["colour_h"])["correct"].sem())
+df["correct"] = df["correct"] * 100
+print(
+    df.groupby(["colour_word_h", "colour_h"] if args.full_table else ["colour_h"])[
+        "correct"
+    ].mean()
+)
+print(
+    df.groupby(["colour_word_h", "colour_h"] if args.full_table else ["colour_h"])[
+        "correct"
+    ].sem()
+)
