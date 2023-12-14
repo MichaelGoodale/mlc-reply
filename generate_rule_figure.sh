@@ -1,6 +1,7 @@
 #!/bin/bash
 
 OUTPUT_STRING="rule_output.csv"
+LOG="rule_log.txt"
 MODEL=${1:-"net-BIML-algebraic-top.pt"}
 
 if test -f "$OUTPUT_STRING"; then
@@ -20,6 +21,7 @@ do
 	python simple.py "$N" False
 	python eval.py  --max --episode_type few_shot_gold --fn_out_model "$MODEL" --verbose --max_length 15 > temp.txt
 	python parse_partial.py temp.txt --n "$N" --frequency "$FREQ" --output $OUTPUT_STRING
+	cat temp.txt >> $LOG
 	rm temp.txt
 done
 
