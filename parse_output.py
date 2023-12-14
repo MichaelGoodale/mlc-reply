@@ -10,7 +10,7 @@ df = pd.read_csv(sys.argv[1])
 df = df.iloc[:, 1:]
 df = df.groupby(["episode_number", "type", "n", "frequency"]).mean().reset_index()
 df["Task"] = df["type"].apply(lambda x: "Generalize" if x == "generalize" else "Copy")
-df["Percent correct per grammar"] = df["correct"] * 100
+df["Percent correct per grammar"] = df["correct"]
 df["Number of repeated arguments"] = df["n"]
 ax = sns.lineplot(
     data=df,
