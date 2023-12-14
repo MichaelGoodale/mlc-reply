@@ -2,7 +2,7 @@
 
 MODEL=${1:-"net-BIML-algebraic-top.pt"}
 
-for N in {1..1000}
+for N in {1..100}
 do
 	echo "Seed number $N"
 	rm data_algebraic/val/*

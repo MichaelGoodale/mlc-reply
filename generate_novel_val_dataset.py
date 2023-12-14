@@ -48,6 +48,8 @@ elif args.string:
     output_string = grammar.apply(input_string)
     if args.string == "1 thrice 2 thrice":
         input_string, output_string = ("1 thrice 2 thrice", "1 1 1 2 2 2")
+    elif args.string == "1 thrice 2":
+        input_string, output_string = ("1 thrice 2", "1 1 1 2")
 else:
     print(
         "You need to provide either a specific string or a random seed using -s or -r respectively"
