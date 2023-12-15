@@ -103,7 +103,7 @@ You can supply a different model as an optional argument.
 
 If you are interested in trying different string generalisations or seeing the precision generalisation curve for "DAX repeatN" where repeatN is a generalised version of thrice for all N, then you should look at `simple.py` and modify the strings after `_QUERY_` but before `_GRAMMAR_`. This allows one to see precisely which strings are studied and which are queried.
 
-# OLD README: Meta-Learning for Compositionality (MLC) for modeling human behavior
+# ORIGINAL README: Meta-Learning for Compositionality (MLC) for modeling human behavior
 
 Meta-Learning for Compositionality (MLC) is an optimization procedure that encourages systematicity through a series of few-shot compositional tasks. This code shows how to train and evaluate a sequence-to-sequence (seq2seq) transformer in PyTorch to implement MLC for modeling human behavior.
 
