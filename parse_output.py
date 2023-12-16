@@ -4,7 +4,7 @@ import seaborn as sns
 import numpy as np
 import sys
 
-sns.set_theme()
+sns.set_theme(style="whitegrid")
 plt.figure(figsize=(12, 6), dpi=300)
 df = pd.read_csv(sys.argv[1])
 df = df.iloc[:, 1:]
