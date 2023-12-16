@@ -12,7 +12,7 @@ df = df.groupby(["episode_number", "type", "n", "frequency"]).mean().reset_index
 df["Task"] = df["type"].apply(lambda x: "Generalize" if x == "generalize" else "Copy")
 df["Percent correct per grammar"] = df["correct"]
 df["Number of repeated arguments"] = df["n"]
-ax = sns.lineplot(
+ax = sns.barplot(
     data=df,
     x="Number of repeated arguments",
     y="Percent correct per grammar",
@@ -23,15 +23,17 @@ sns.move_legend(ax, "upper right")
 ax2 = plt.twinx()
 ax2.grid(False)
 df["Frequency"] = np.log(df["frequency"] + 1)
-sns.lineplot(
+sns.pointplot(
     data=df,
-    x="n",
+    x="Number of repeated arguments",
     y="frequency",
     ax=ax2,
     color="black",
     linestyle="--",
     label="Frequency in the train set",
+    markersize=1,
 )
 ax2.set_ylabel("Log frequency (where log(0)=0)")
+ax2.set_ylim(0, 50_000)
 plt.legend(loc="lower center")
 plt.show()
