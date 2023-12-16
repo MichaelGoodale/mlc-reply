@@ -26,7 +26,7 @@ df["Frequency"] = np.log(df["frequency"] + 1)
 sns.pointplot(
     data=df,
     x="Number of repeated arguments",
-    y="frequency",
+    y="Frequency",
     ax=ax2,
     color="black",
     linestyle="--",
@@ -34,6 +34,6 @@ sns.pointplot(
     markersize=1,
 )
 ax2.set_ylabel("Log frequency (where log(0)=0)")
-ax2.set_ylim(0, 50_000)
+ax2.set_ylim(0, 12)
 plt.legend(loc="lower center")
 plt.show()
