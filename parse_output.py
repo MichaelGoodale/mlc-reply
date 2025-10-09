@@ -12,6 +12,9 @@ df = df.groupby(["episode_number", "type", "n", "frequency"]).mean().reset_index
 df["Task"] = df["type"].apply(lambda x: "Generalize" if x == "generalize" else "Copy")
 df["Percent correct per grammar"] = df["correct"]
 df["Number of repeated arguments"] = df["n"]
+
+df = df[(df["Task"] == "Copy") | (df["pure_application"] == True)]
+
 ax = sns.barplot(
     data=df,
     x="Number of repeated arguments",
@@ -19,6 +22,8 @@ ax = sns.barplot(
     hue="Task",
     errorbar="ci",
 )
+
+
 sns.move_legend(ax, "upper right")
 ax2 = plt.twinx()
 ax2.grid(False)

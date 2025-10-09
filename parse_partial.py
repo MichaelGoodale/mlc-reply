@@ -10,6 +10,7 @@ parser = argparse.ArgumentParser(
 )
 
 parser.add_argument("filename")
+parser.add_argument("--model", type=str)
 parser.add_argument("--n", type=int)
 parser.add_argument("--output", type=str)
 parser.add_argument("--frequency", type=int)
@@ -49,13 +50,16 @@ with open(args.filename) as f:
                     "episode_number": episode_number,
                     "n": args.n,
                     "frequency": args.frequency,
+                    "model": args.model,
                     "type": state,
                     "correct": "target" not in line,
+                    "pure_application": False,
                 }
                 if state == "generalize":
-                    evaluations.append(evaluation)
                     if m := re.match(r"\w+ (\w+) -> [A-Z]", line):
                         dax = m.group(1)
+                        evaluation["pure_application"] = True
+                    evaluations.append(evaluation)
                 elif state == "retrieval":
                     possibles.append((line.split("->")[0].strip(), evaluation))
 df = pd.DataFrame(evaluations)
