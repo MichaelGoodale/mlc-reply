@@ -13,7 +13,7 @@ df["Task"] = df["type"].apply(lambda x: "Generalize" if x == "generalize" else "
 df["Percent correct per grammar"] = df["correct"]
 df["Number of repeated arguments"] = df["n"]
 
-df = df[(df["Task"] == "Copy") | (df["pure_application"] == True)]
+# df = df[(df["Task"] == "Copy") | (df["pure_application"] == True)]
 
 ax = sns.barplot(
     data=df,
@@ -41,4 +41,6 @@ sns.pointplot(
 ax2.set_ylabel("Log frequency (where log(0)=0)")
 ax2.set_ylim(0, 12)
 plt.legend(loc="lower center")
-plt.show()
+# plt.show()
+
+plt.savefig("general.eps")

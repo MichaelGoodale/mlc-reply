@@ -1,7 +1,7 @@
 #!/bin/bash
 
-MODEL=${1:-"uniform.pt"} #"net-BIML-algebraic-top.pt"}
-OUTPUT_STRING="rule_output_alt.csv"
+MODEL=${1:-"net-BIML-algebraic-top.pt"} #"net-BIML-algebraic-top.pt"}
+OUTPUT_STRING="rule_output.csv"
 LOG="rule_log.txt"
 
 if test -f "$OUTPUT_STRING"; then

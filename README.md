@@ -99,6 +99,12 @@ You can supply a different model as an optional argument.
 ./generate_rule_figure.sh net-BIML-top.pt # Reproduce figure 3 from article for the `net-BIML-top.pt` model
 ```
 
+You can also directly recreate the figure using
+
+```bash
+uv run parse_output.py rule_output.csv
+```
+
 ### Extending figure 3
 
 If you are interested in trying different string generalisations or seeing the precision generalisation curve for "DAX repeatN" where repeatN is a generalised version of thrice for all N, then you should look at `simple.py` and modify the strings after `_QUERY_` but before `_GRAMMAR_`. This allows one to see precisely which strings are studied and which are queried.
