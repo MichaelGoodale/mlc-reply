@@ -106,7 +106,83 @@ If you are interested in trying different string generalisations or seeing the p
 ## Recreating Figure 4
 
 Recreating figure 4 is slightly more involved as it requires modifying some of Lake and Baroni's code.
-Specifically, you need to go to
+
+### Recreating training datasets
+
+To recreate the training datasets, go to lines 255-261 in `generate-datasets.py`
+
+```python
+    arr = vars_in_lhs.copy()
+    while True:
+        if len(arr) >= max_len:
+            break
+        if len(arr) >= min_len and flip(p_stop_rhs):
+            break
+        item = random.choice(vars_in_lhs)
+        arr.append(item)
+    np.random.shuffle(arr)  # randomize RHS order
+```
+
+This generates a list that is the right hand side of a rule (e.g. for 'thrice', it would be 1 1 1).
+You can modify it by
+replacing `arr` with any array generated from the elements of `vars_in_lhs`.
+For example, to generate a distribution with no fours, you can use the following code.
+
+```python
+    arr = vars_in_lhs.copy()
+    while True:
+        if len(arr) >= max_len:
+            break
+        if len(arr) >= min_len and flip(p_stop_rhs) and len(arr) != 4:
+            break
+        item = random.choice(vars_in_lhs)
+        arr.append(item)
+    np.random.shuffle(arr)  # randomize RHS order
+```
+
+Once you have modified the code to produce the desired distribution, you can run `uv run generate_datasets.py`.
+Be sure to modify the 'mydir' argument on line 355 to change the output folder.
+The specific datasets used by our paper are found in `data_algebraic_alt`, `data_algebraic`, `data_algebraic_alt_dist` and `data_algebraic_uniform`.
+
+### Training models
+
+To train a model, you first need to add the new datasets to `datasets.py`, for example to add `data_algebraic_uniform`, you can add the following snippet at line 62.
+
+```python
+       elif episode_type == "algebraic_uniform":
+           D_train = DataAlg("train", mydir="data_algebraic_uniform", min_ns=14)
+           D_val = DataAlg("val", mydir="data_algebraic_uniform")
+```
+
+Simply change the `episode_type` and `mydir` to whatever you've named the new distribution.
+
+You can then train a model by running
+
+```bash
+uv run train.py --fn_out_model MODEL_NAME.pt --episode_type EPISODE_TYPE
+```
+
+where `EPISODE_TYPE` is as above, and `MODEL_NAME.pt` is a file for the output weights.
+
+### Creating data
+
+To create the data shown in Figure 4, you need to run `all_data.sh`.
+
+```bash
+./all_data.sh
+```
+
+If you wish to include your custom distributions, just modify the two arrays at the top of the file.
+
+### Creating figures
+
+To create the figures, look at the jupyter notebook file in ``fancy-fig.ipynb`.
+
+You can open jupyter with uv using the following command:
+
+```bash
+uv run --with jupyter jupyter lab
+```
 
 # README FROM LAKE AND BARONI: Meta-Learning for Compositionality (MLC) for modeling human behavior
 

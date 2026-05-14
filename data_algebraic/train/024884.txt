@@ -1,0 +1,38 @@
+*SUPPORT*
+IN: dax lug fep dax OUT: RED RED GREEN
+IN: lug lug OUT: GREEN GREEN
+IN: lug dax OUT: GREEN RED
+IN: zup tufa OUT: YELLOW YELLOW
+IN: dax fep zup OUT: YELLOW RED
+IN: lug tufa OUT: GREEN GREEN
+IN: kiki fep dax OUT: RED BLUE
+IN: zup wif zup fep kiki OUT: YELLOW BLUE YELLOW BLUE YELLOW YELLOW BLUE YELLOW
+IN: dax fep kiki tufa tufa OUT: BLUE RED BLUE RED BLUE RED BLUE RED
+IN: dax fep dax OUT: RED RED
+IN: dax fep kiki OUT: BLUE RED
+IN: dax fep lug wif kiki OUT: GREEN RED BLUE BLUE GREEN RED BLUE
+IN: dax lug OUT: RED GREEN
+IN: zup OUT: YELLOW
+
+*QUERY*
+IN: lug OUT: GREEN
+IN: kiki OUT: BLUE
+IN: dax OUT: RED
+IN: zup lug fep zup OUT: YELLOW YELLOW GREEN
+IN: zup dax OUT: YELLOW RED
+IN: kiki tufa tufa OUT: BLUE BLUE BLUE BLUE
+IN: lug zup OUT: GREEN YELLOW
+IN: zup fep dax tufa OUT: RED YELLOW RED YELLOW
+IN: dax fep lug OUT: GREEN RED
+IN: kiki fep zup OUT: YELLOW BLUE
+
+*GRAMMAR*
+kiki -> BLUE 
+ dax -> RED 
+ zup -> YELLOW 
+ lug -> GREEN 
+ x1 wif x2 -> [x1] [x2] [x2] [x1] [x2] 
+ x1 tufa -> [x1] [x1] 
+ u1 fep u2 -> [u2] [u1] 
+ u1 x1 -> [u1] [x1] 
+ 

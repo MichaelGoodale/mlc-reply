@@ -1,6 +1,5 @@
 #!/bin/bash
 
-MODEL=${1:-"uniform.pt"} #"net-BIML-algebraic-top.pt"}
 OUTPUT_STRING="all_data.csv"
 LOG="rule_log.txt"
 

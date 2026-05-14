@@ -1,0 +1,38 @@
+*SUPPORT*
+IN: fep wif OUT: YELLOW YELLOW YELLOW YELLOW
+IN: fep dax OUT: YELLOW RED
+IN: fep blicket fep OUT: YELLOW YELLOW YELLOW YELLOW
+IN: dax lug OUT: RED GREEN
+IN: zup OUT: PURPLE
+IN: lug OUT: GREEN
+IN: dax fep kiki dax OUT: RED RED YELLOW
+IN: zup kiki dax blicket dax OUT: RED PURPLE RED RED RED PURPLE
+IN: zup lug kiki fep OUT: YELLOW PURPLE GREEN
+IN: zup wif OUT: PURPLE PURPLE PURPLE PURPLE
+IN: fep fep OUT: YELLOW YELLOW
+IN: dax dax OUT: RED RED
+IN: dax fep kiki zup wif OUT: PURPLE PURPLE PURPLE PURPLE RED YELLOW
+IN: lug fep zup kiki fep wif OUT: YELLOW YELLOW YELLOW YELLOW GREEN YELLOW PURPLE
+
+*QUERY*
+IN: fep dax blicket dax OUT: YELLOW RED RED RED YELLOW RED
+IN: fep blicket fep dax OUT: YELLOW YELLOW RED YELLOW RED YELLOW
+IN: fep OUT: YELLOW
+IN: fep fep wif OUT: YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW
+IN: lug dax OUT: GREEN RED
+IN: dax zup kiki dax OUT: RED RED PURPLE
+IN: dax zup OUT: RED PURPLE
+IN: zup kiki dax OUT: RED PURPLE
+IN: dax OUT: RED
+IN: zup dax dax kiki lug lug OUT: GREEN GREEN PURPLE RED RED
+
+*GRAMMAR*
+fep -> YELLOW 
+ zup -> PURPLE 
+ dax -> RED 
+ lug -> GREEN 
+ x1 blicket x2 -> [x1] [x2] [x2] [x1] 
+ x1 kiki x2 -> [x2] [x1] 
+ x1 wif -> [x1] [x1] [x1] [x1] 
+ u1 x1 -> [u1] [x1] 
+ 
