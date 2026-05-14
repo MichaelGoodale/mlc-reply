@@ -1,0 +1,38 @@
+*SUPPORT*
+IN: fep wif kiki OUT: YELLOW BLUE YELLOW BLUE YELLOW BLUE
+IN: wif OUT: BLUE
+IN: fep OUT: YELLOW
+IN: blicket fep wif OUT: RED YELLOW BLUE
+IN: blicket zup blicket OUT: RED RED RED RED
+IN: fep blicket zup wif OUT: YELLOW RED BLUE RED RED
+IN: tufa OUT: PURPLE
+IN: blicket wif kiki OUT: RED BLUE RED BLUE RED BLUE
+IN: wif zup tufa OUT: BLUE PURPLE BLUE BLUE
+IN: tufa zup blicket OUT: PURPLE RED PURPLE PURPLE
+IN: blicket tufa OUT: RED PURPLE
+IN: blicket zup wif OUT: RED BLUE RED RED
+IN: fep zup wif OUT: YELLOW BLUE YELLOW YELLOW
+IN: tufa tufa zup tufa OUT: PURPLE PURPLE PURPLE PURPLE PURPLE
+
+*QUERY*
+IN: blicket zup tufa OUT: RED PURPLE RED RED
+IN: wif kiki OUT: BLUE BLUE BLUE
+IN: blicket OUT: RED
+IN: blicket zup fep OUT: RED YELLOW RED RED
+IN: tufa fep blicket tufa zup tufa OUT: PURPLE YELLOW RED PURPLE PURPLE PURPLE PURPLE
+IN: fep kiki OUT: YELLOW YELLOW YELLOW
+IN: tufa tufa OUT: PURPLE PURPLE
+IN: tufa zup fep OUT: PURPLE YELLOW PURPLE PURPLE
+IN: fep zup fep OUT: YELLOW YELLOW YELLOW YELLOW
+IN: tufa kiki OUT: PURPLE PURPLE PURPLE
+
+*GRAMMAR*
+fep -> YELLOW 
+ blicket -> RED 
+ wif -> BLUE 
+ tufa -> PURPLE 
+ x1 gazzer x2 -> [x2] [x2] [x1] [x2] [x2] [x1] [x1] [x1] [x1] 
+ u1 zup u2 -> [u1] [u2] [u1] [u1] 
+ x1 kiki -> [x1] [x1] [x1] 
+ u1 x1 -> [u1] [x1] 
+ 

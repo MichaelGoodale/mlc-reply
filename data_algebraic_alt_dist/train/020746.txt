@@ -1,0 +1,38 @@
+*SUPPORT*
+IN: lug wif kiki wif gazzer OUT: BLUE YELLOW BLUE RED BLUE YELLOW BLUE
+IN: fep lug OUT: GREEN BLUE
+IN: gazzer wif lug OUT: RED BLUE RED
+IN: lug tufa lug OUT: BLUE BLUE BLUE BLUE BLUE BLUE BLUE
+IN: kiki zup OUT: YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW
+IN: fep fep OUT: GREEN GREEN
+IN: kiki tufa lug OUT: BLUE BLUE BLUE YELLOW BLUE YELLOW BLUE
+IN: fep wif fep wif fep OUT: GREEN GREEN GREEN GREEN GREEN GREEN GREEN
+IN: gazzer fep tufa lug OUT: RED BLUE BLUE BLUE GREEN BLUE GREEN BLUE
+IN: kiki tufa kiki OUT: YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW
+IN: fep wif kiki OUT: GREEN YELLOW GREEN
+IN: lug tufa kiki OUT: YELLOW YELLOW YELLOW BLUE YELLOW BLUE YELLOW
+IN: gazzer OUT: RED
+IN: kiki lug OUT: YELLOW BLUE
+
+*QUERY*
+IN: fep tufa lug OUT: BLUE BLUE BLUE GREEN BLUE GREEN BLUE
+IN: fep OUT: GREEN
+IN: lug OUT: BLUE
+IN: lug kiki tufa fep OUT: BLUE GREEN GREEN GREEN YELLOW GREEN YELLOW GREEN
+IN: lug lug tufa gazzer OUT: BLUE RED RED RED BLUE RED BLUE RED
+IN: gazzer tufa gazzer OUT: RED RED RED RED RED RED RED
+IN: fep zup OUT: GREEN GREEN GREEN GREEN GREEN GREEN
+IN: lug kiki tufa gazzer OUT: BLUE RED RED RED YELLOW RED YELLOW RED
+IN: gazzer tufa kiki OUT: YELLOW YELLOW YELLOW RED YELLOW RED YELLOW
+IN: lug tufa gazzer OUT: RED RED RED BLUE RED BLUE RED
+
+*GRAMMAR*
+lug -> BLUE 
+ fep -> GREEN 
+ kiki -> YELLOW 
+ gazzer -> RED 
+ u1 tufa u2 -> [u2] [u2] [u2] [u1] [u2] [u1] [u2] 
+ x1 wif u1 -> [x1] [u1] [x1] 
+ x1 zup -> [x1] [x1] [x1] [x1] [x1] [x1] 
+ u1 x1 -> [u1] [x1] 
+ 

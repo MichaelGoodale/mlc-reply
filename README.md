@@ -2,18 +2,9 @@
 
 This repo includes the original code from [Lake and Baroni, 2023](https://github.com/brendenlake/MCL) as well as some new scripts which allow one to replicate some of our challenges to their claims.
 
-## Installation
+## Installation/running scripts
 
-To install, one can use the following code to create a Python environment and install the necessary packages:
-
-```
-python -mvenv env
-source env/bin/activate.sh
-python -m pip install -r requirements.txt
-```
-
-This should install the required packages (including PyTorch) in a couple of minutes at the most.
-Running the different scripts should not take too long around 2 minutes on a computer with a decent GPU, and perhaps up to 10 minutes on a standard desktop.
+This project uses [`uv`](https://github.com/astral-sh/uv) to manage dependencies. You should be able to run any python script by using `uv run SCRIPT.py`
 
 ## Finding strings
 
@@ -28,7 +19,7 @@ You can run it on different models by passing a different model from `out_models
 
 ### Example output
 
-Here's some abriged output from `./find_weird.sh net-biml-top.pt`
+Here's some abridged output from `./find_weird.sh net-biml-top.pt`
 
 ```
 Seed number 23
@@ -43,7 +34,7 @@ We can see that the model failed to generalise to `3 2 surround 3 after 1 surrou
 
 ## Recreate tables
 
-`evaluate_script_from_gg.sh` is a Bash script which creates the data for tables 1 and 2 (level 2 errors).
+`evaluate_script_from_gg.sh` is a Bash script which creates the data for tables 2 and 3 (level 2 errors).
 
 ```
 ./evaluate_script_from_gg.sh # Recreate our original tables
@@ -65,7 +56,7 @@ Note that the script is formatting using L&B's original formatting for strings i
 
 ### Example output
 
-The output for `./evaluate_string_from_gg.sh "2 after 3 DAX thrice" net-BIML-top.pt` shows that the model heistates between two solutions (slightly preferring the incorrect solution to the correct one) and always choses the wrong answer when the held out colour is purple.
+The output for `./evaluate_string_from_gg.sh "2 after 3 DAX thrice" net-BIML-top.pt` shows that the model hesitates between two solutions (slightly preferring the incorrect solution to the correct one) and always choses the wrong answer when the held out colour is purple.
 
 ```
 generalization
@@ -81,7 +72,7 @@ RED       0.148611
 YELLOW    0.511111
 Name: correct, dtype: float64
 colour_h #Standard Error of the mean
-BLUE      0.018598
+#BLUE      0.018598
 GREEN     0.017448
 PINK      0.018631
 PURPLE    0.000000
@@ -89,19 +80,33 @@ RED       0.013266
 YELLOW    0.018642
 ```
 
-## Recreate figure 1
+## Recreate figure 2
 
-`generate_rule_figure.sh` is a Bash script which creates Figure 1 from our paper (discussed in the section on Level 3 mistakes).
+You can recreate figure 2 from scratch by running the following commands:
+
+```bash
+./find_weird.sh > bad-strings.txt
+uv run performance-per-string.py
+```
+
+## Recreate figure 3
+
+`generate_rule_figure.sh` is a Bash script which creates Figure 3 from our paper (discussed in the section on Level 3 mistakes).
 You can supply a different model as an optional argument.
 
-```
-./generate_rule_figure.sh # Reproduce figure 1 from article
-./generate_rule_figure.sh net-BIML-top.pt # Reproduce figure 1 from article for the `net-BIML-top.pt` model
+```bash
+./generate_rule_figure.sh # Reproduce figure 3 from article
+./generate_rule_figure.sh net-BIML-top.pt # Reproduce figure 3 from article for the `net-BIML-top.pt` model
 ```
 
-### Extending figure 1
+### Extending figure 3
 
 If you are interested in trying different string generalisations or seeing the precision generalisation curve for "DAX repeatN" where repeatN is a generalised version of thrice for all N, then you should look at `simple.py` and modify the strings after `_QUERY_` but before `_GRAMMAR_`. This allows one to see precisely which strings are studied and which are queried.
+
+## Recreating Figure 4
+
+Recreating figure 4 is slightly more involved as it requires modifying some of Lake and Baroni's code.
+Specifically, you need to go to
 
 # README FROM LAKE AND BARONI: Meta-Learning for Compositionality (MLC) for modeling human behavior
 

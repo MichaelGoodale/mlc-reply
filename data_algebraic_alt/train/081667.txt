@@ -1,0 +1,38 @@
+*SUPPORT*
+IN: gazzer zup OUT: YELLOW YELLOW
+IN: dax dax zup kiki blicket OUT: PURPLE PURPLE PURPLE BLUE
+IN: lug zup OUT: GREEN GREEN
+IN: blicket gazzer dax blicket gazzer dax OUT: BLUE YELLOW PURPLE BLUE YELLOW PURPLE
+IN: dax zup kiki gazzer kiki blicket kiki blicket OUT: PURPLE PURPLE YELLOW BLUE BLUE
+IN: blicket wif dax OUT: BLUE BLUE BLUE PURPLE BLUE PURPLE
+IN: dax wif gazzer kiki lug OUT: PURPLE PURPLE PURPLE YELLOW PURPLE YELLOW GREEN
+IN: blicket dax wif dax OUT: BLUE PURPLE PURPLE PURPLE PURPLE PURPLE PURPLE
+IN: blicket zup OUT: BLUE BLUE
+IN: dax zup OUT: PURPLE PURPLE
+IN: dax OUT: PURPLE
+IN: gazzer kiki lug OUT: YELLOW GREEN
+IN: lug dax OUT: GREEN PURPLE
+IN: blicket OUT: BLUE
+
+*QUERY*
+IN: gazzer wif gazzer OUT: YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW
+IN: gazzer OUT: YELLOW
+IN: lug wif dax OUT: GREEN GREEN GREEN PURPLE GREEN PURPLE
+IN: gazzer gazzer wif dax OUT: YELLOW YELLOW YELLOW YELLOW PURPLE YELLOW PURPLE
+IN: dax wif lug OUT: PURPLE PURPLE PURPLE GREEN PURPLE GREEN
+IN: gazzer gazzer blicket kiki dax OUT: YELLOW YELLOW BLUE PURPLE
+IN: lug wif blicket OUT: GREEN GREEN GREEN BLUE GREEN BLUE
+IN: blicket kiki gazzer OUT: BLUE YELLOW
+IN: blicket wif blicket OUT: BLUE BLUE BLUE BLUE BLUE BLUE
+IN: gazzer gazzer OUT: YELLOW YELLOW
+
+*GRAMMAR*
+lug -> GREEN 
+ gazzer -> YELLOW 
+ blicket -> BLUE 
+ dax -> PURPLE 
+ x1 kiki u1 -> [x1] [u1] 
+ u1 zup -> [u1] [u1] 
+ u1 wif u2 -> [u1] [u1] [u1] [u2] [u1] [u2] 
+ u1 x1 -> [u1] [x1] 
+ 

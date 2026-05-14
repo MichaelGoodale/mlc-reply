@@ -1,0 +1,32 @@
+*SUPPORT*
+IN: tufa OUT: PURPLE
+IN: gazzer OUT: GREEN
+IN: dax OUT: RED
+IN: wif OUT: BLUE
+IN: gazzer zup dax OUT: RED GREEN
+IN: tufa zup gazzer OUT: GREEN PURPLE
+IN: gazzer blicket OUT: GREEN GREEN GREEN
+IN: gazzer fep dax OUT: GREEN RED GREEN
+IN: tufa blicket OUT: PURPLE PURPLE PURPLE
+IN: dax fep tufa OUT: RED PURPLE RED
+IN: gazzer blicket zup dax OUT: RED GREEN GREEN GREEN
+IN: dax zup tufa fep gazzer OUT: PURPLE GREEN PURPLE RED
+IN: gazzer zup dax blicket OUT: RED RED RED GREEN
+IN: dax fep tufa zup gazzer OUT: GREEN RED PURPLE RED
+
+*QUERY*
+IN: tufa OUT: PURPLE
+IN: gazzer OUT: GREEN
+IN: dax OUT: RED
+IN: wif OUT: BLUE
+IN: tufa blicket gazzer OUT: PURPLE PURPLE PURPLE GREEN
+
+*GRAMMAR*
+tufa -> PURPLE
+gazzer -> GREEN
+dax -> RED
+wif -> BLUE
+u1 blicket -> [u1] [u1] [u1]
+u1 fep u2 -> [u1] [u2] [u1]
+x1 zup x2 -> [x2] [x1]
+u1 x1 -> [u1] [x1]

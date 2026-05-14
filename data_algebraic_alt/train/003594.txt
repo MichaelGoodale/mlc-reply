@@ -1,0 +1,38 @@
+*SUPPORT*
+IN: zup OUT: YELLOW
+IN: fep wif fep OUT: RED RED
+IN: lug kiki OUT: PINK BLUE
+IN: fep dax OUT: RED RED RED
+IN: zup wif zup gazzer zup wif fep OUT: YELLOW YELLOW YELLOW YELLOW RED YELLOW
+IN: zup wif zup dax OUT: YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW
+IN: kiki wif fep OUT: RED BLUE
+IN: kiki wif zup gazzer fep wif lug OUT: YELLOW BLUE YELLOW BLUE PINK RED
+IN: zup wif zup OUT: YELLOW YELLOW
+IN: lug wif zup OUT: YELLOW PINK
+IN: lug dax OUT: PINK PINK PINK
+IN: lug wif kiki gazzer kiki wif lug OUT: BLUE PINK BLUE PINK PINK BLUE
+IN: zup zup fep gazzer kiki OUT: YELLOW YELLOW RED YELLOW YELLOW RED BLUE
+IN: zup kiki gazzer fep zup OUT: YELLOW BLUE YELLOW BLUE RED YELLOW
+
+*QUERY*
+IN: lug wif fep OUT: RED PINK
+IN: fep wif lug dax OUT: PINK RED PINK RED PINK RED
+IN: kiki OUT: BLUE
+IN: lug OUT: PINK
+IN: fep OUT: RED
+IN: zup wif kiki OUT: BLUE YELLOW
+IN: kiki wif lug gazzer zup lug OUT: PINK BLUE PINK BLUE YELLOW PINK
+IN: lug wif lug OUT: PINK PINK
+IN: zup wif kiki gazzer kiki OUT: BLUE YELLOW BLUE YELLOW BLUE
+IN: zup dax OUT: YELLOW YELLOW YELLOW
+
+*GRAMMAR*
+kiki -> BLUE 
+ lug -> PINK 
+ zup -> YELLOW 
+ fep -> RED 
+ x1 gazzer x2 -> [x1] [x1] [x2] 
+ x1 dax -> [x1] [x1] [x1] 
+ u1 wif u2 -> [u2] [u1] 
+ u1 x1 -> [u1] [x1] 
+ 

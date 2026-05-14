@@ -1,0 +1,38 @@
+*SUPPORT*
+IN: zup fep OUT: BLUE BLUE BLUE BLUE BLUE BLUE BLUE
+IN: tufa tufa lug wif OUT: RED PURPLE RED RED RED PURPLE PURPLE
+IN: blicket blicket OUT: YELLOW YELLOW
+IN: zup tufa lug wif OUT: BLUE PURPLE RED RED RED PURPLE PURPLE
+IN: zup lug zup OUT: BLUE BLUE BLUE BLUE BLUE BLUE
+IN: blicket tufa OUT: YELLOW RED
+IN: zup lug wif OUT: PURPLE BLUE BLUE BLUE PURPLE PURPLE
+IN: wif lug zup OUT: BLUE PURPLE PURPLE PURPLE BLUE BLUE
+IN: wif lug wif OUT: PURPLE PURPLE PURPLE PURPLE PURPLE PURPLE
+IN: blicket lug tufa OUT: RED YELLOW YELLOW YELLOW RED RED
+IN: wif wif OUT: PURPLE PURPLE
+IN: zup OUT: BLUE
+IN: tufa lug blicket OUT: YELLOW RED RED RED YELLOW YELLOW
+IN: zup lug blicket OUT: YELLOW BLUE BLUE BLUE YELLOW YELLOW
+
+*QUERY*
+IN: blicket OUT: YELLOW
+IN: blicket lug blicket OUT: YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW
+IN: wif tufa lug zup OUT: PURPLE BLUE RED RED RED BLUE BLUE
+IN: tufa OUT: RED
+IN: zup wif lug blicket OUT: BLUE YELLOW PURPLE PURPLE PURPLE YELLOW YELLOW
+IN: tufa lug tufa OUT: RED RED RED RED RED RED
+IN: blicket zup lug blicket OUT: YELLOW YELLOW BLUE BLUE BLUE YELLOW YELLOW
+IN: wif OUT: PURPLE
+IN: tufa fep OUT: RED RED RED RED RED RED RED
+IN: blicket lug wif OUT: PURPLE YELLOW YELLOW YELLOW PURPLE PURPLE
+
+*GRAMMAR*
+blicket -> YELLOW 
+ wif -> PURPLE 
+ zup -> BLUE 
+ tufa -> RED 
+ u1 lug u2 -> [u2] [u1] [u1] [u1] [u2] [u2] 
+ x1 dax x2 -> [x1] [x2] [x2] [x1] [x2] [x2] [x1] [x1] [x2] 
+ x1 fep -> [x1] [x1] [x1] [x1] [x1] [x1] [x1] 
+ u1 x1 -> [u1] [x1] 
+ 

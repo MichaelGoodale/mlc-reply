@@ -1,0 +1,32 @@
+*SUPPORT*
+IN: zup OUT: GREEN
+IN: lug OUT: BLUE
+IN: dax OUT: PURPLE
+IN: tufa OUT: PINK
+IN: lug fep dax OUT: PURPLE BLUE
+IN: zup fep lug OUT: BLUE GREEN
+IN: lug kiki OUT: BLUE BLUE BLUE
+IN: lug gazzer dax OUT: BLUE PURPLE BLUE
+IN: zup kiki OUT: GREEN GREEN GREEN
+IN: dax gazzer zup OUT: PURPLE GREEN PURPLE
+IN: lug kiki fep dax OUT: PURPLE BLUE BLUE BLUE
+IN: dax fep zup gazzer lug OUT: GREEN BLUE GREEN PURPLE
+IN: lug fep dax kiki OUT: PURPLE PURPLE PURPLE BLUE
+IN: dax gazzer zup fep lug OUT: BLUE PURPLE GREEN PURPLE
+
+*QUERY*
+IN: zup OUT: GREEN
+IN: lug OUT: BLUE
+IN: dax OUT: PURPLE
+IN: tufa OUT: PINK
+IN: zup kiki lug OUT: GREEN GREEN GREEN BLUE
+
+*GRAMMAR*
+zup -> GREEN
+lug -> BLUE
+dax -> PURPLE
+tufa -> PINK
+u1 kiki -> [u1] [u1] [u1]
+u1 gazzer u2 -> [u1] [u2] [u1]
+x1 fep x2 -> [x2] [x1]
+u1 x1 -> [u1] [x1]

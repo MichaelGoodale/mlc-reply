@@ -1,0 +1,38 @@
+*SUPPORT*
+IN: gazzer OUT: PINK
+IN: kiki OUT: GREEN
+IN: kiki zup fep kiki OUT: GREEN BLUE BLUE GREEN GREEN BLUE
+IN: gazzer gazzer gazzer OUT: PINK PINK PINK
+IN: zup OUT: BLUE
+IN: blicket lug blicket OUT: RED RED RED RED RED RED RED RED
+IN: gazzer lug kiki OUT: PINK GREEN PINK PINK GREEN GREEN PINK PINK
+IN: gazzer tufa gazzer OUT: PINK PINK PINK PINK PINK PINK
+IN: blicket OUT: RED
+IN: blicket lug zup OUT: RED BLUE RED RED BLUE BLUE RED RED
+IN: kiki lug blicket OUT: GREEN RED GREEN GREEN RED RED GREEN GREEN
+IN: kiki lug zup OUT: GREEN BLUE GREEN GREEN BLUE BLUE GREEN GREEN
+IN: gazzer lug gazzer OUT: PINK PINK PINK PINK PINK PINK PINK PINK
+IN: zup lug zup OUT: BLUE BLUE BLUE BLUE BLUE BLUE BLUE BLUE
+
+*QUERY*
+IN: gazzer lug blicket OUT: PINK RED PINK PINK RED RED PINK PINK
+IN: gazzer kiki OUT: PINK GREEN
+IN: blicket kiki OUT: RED GREEN
+IN: kiki tufa blicket gazzer OUT: GREEN GREEN GREEN RED PINK GREEN RED PINK
+IN: blicket lug gazzer OUT: RED PINK RED RED PINK PINK RED RED
+IN: zup lug gazzer OUT: BLUE PINK BLUE BLUE PINK PINK BLUE BLUE
+IN: blicket blicket OUT: RED RED
+IN: zup tufa gazzer kiki OUT: BLUE BLUE BLUE PINK GREEN BLUE PINK GREEN
+IN: kiki tufa zup OUT: GREEN GREEN GREEN BLUE GREEN BLUE
+IN: gazzer lug zup OUT: PINK BLUE PINK PINK BLUE BLUE PINK PINK
+
+*GRAMMAR*
+kiki -> GREEN 
+ zup -> BLUE 
+ blicket -> RED 
+ gazzer -> PINK 
+ u1 lug u2 -> [u1] [u2] [u1] [u1] [u2] [u2] [u1] [u1] 
+ u1 tufa x1 -> [u1] [u1] [u1] [x1] [u1] [x1] 
+ u1 fep x1 -> [u1] [u1] [x1] [x1] [u1] 
+ u1 x1 -> [u1] [x1] 
+ 

@@ -1,0 +1,32 @@
+*SUPPORT*
+IN: blicket OUT: YELLOW
+IN: wif OUT: PURPLE
+IN: tufa OUT: BLUE
+IN: lug OUT: RED
+IN: wif zup tufa OUT: BLUE PURPLE
+IN: blicket zup wif OUT: PURPLE YELLOW
+IN: wif dax OUT: PURPLE PURPLE PURPLE
+IN: wif fep tufa OUT: PURPLE BLUE PURPLE
+IN: blicket dax OUT: YELLOW YELLOW YELLOW
+IN: tufa fep blicket OUT: BLUE YELLOW BLUE
+IN: wif dax zup tufa OUT: BLUE PURPLE PURPLE PURPLE
+IN: tufa zup blicket fep wif OUT: YELLOW PURPLE YELLOW BLUE
+IN: wif zup tufa dax OUT: BLUE BLUE BLUE PURPLE
+IN: tufa fep blicket zup wif OUT: PURPLE BLUE YELLOW BLUE
+
+*QUERY*
+IN: blicket OUT: YELLOW
+IN: wif OUT: PURPLE
+IN: tufa OUT: BLUE
+IN: lug OUT: RED
+IN: blicket dax wif OUT: YELLOW YELLOW YELLOW PURPLE
+
+*GRAMMAR*
+blicket -> YELLOW
+wif -> PURPLE
+tufa -> BLUE
+lug -> RED
+u1 dax -> [u1] [u1] [u1]
+u1 fep u2 -> [u1] [u2] [u1]
+x1 zup x2 -> [x2] [x1]
+u1 x1 -> [u1] [x1]

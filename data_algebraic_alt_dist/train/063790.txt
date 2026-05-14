@@ -1,0 +1,38 @@
+*SUPPORT*
+IN: tufa OUT: YELLOW
+IN: kiki zup tufa OUT: BLUE YELLOW YELLOW BLUE BLUE YELLOW YELLOW
+IN: dax fep OUT: PINK PURPLE
+IN: kiki tufa zup dax OUT: BLUE YELLOW PINK PINK YELLOW YELLOW PINK PINK
+IN: kiki dax OUT: BLUE PINK
+IN: tufa gazzer dax OUT: YELLOW PINK YELLOW PINK YELLOW PINK PINK PINK
+IN: dax zup fep OUT: PINK PURPLE PURPLE PINK PINK PURPLE PURPLE
+IN: fep zup tufa OUT: PURPLE YELLOW YELLOW PURPLE PURPLE YELLOW YELLOW
+IN: kiki tufa OUT: BLUE YELLOW
+IN: tufa fep OUT: YELLOW PURPLE
+IN: tufa zup fep OUT: YELLOW PURPLE PURPLE YELLOW YELLOW PURPLE PURPLE
+IN: kiki tufa kiki OUT: BLUE YELLOW BLUE
+IN: fep zup fep OUT: PURPLE PURPLE PURPLE PURPLE PURPLE PURPLE PURPLE
+IN: fep kiki OUT: PURPLE BLUE
+
+*QUERY*
+IN: tufa fep zup dax OUT: YELLOW PURPLE PINK PINK PURPLE PURPLE PINK PINK
+IN: kiki fep fep OUT: BLUE PURPLE PURPLE
+IN: tufa tufa OUT: YELLOW YELLOW
+IN: dax dax kiki fep OUT: PINK PINK BLUE PURPLE
+IN: kiki OUT: BLUE
+IN: dax zup dax OUT: PINK PINK PINK PINK PINK PINK PINK
+IN: fep OUT: PURPLE
+IN: dax gazzer fep OUT: PINK PURPLE PINK PURPLE PINK PURPLE PURPLE PURPLE
+IN: dax OUT: PINK
+IN: dax tufa OUT: PINK YELLOW
+
+*GRAMMAR*
+fep -> PURPLE 
+ kiki -> BLUE 
+ tufa -> YELLOW 
+ dax -> PINK 
+ u1 lug u2 -> [u2] [u1] [u2] [u1] [u2] [u1] [u1] [u1] [u2] 
+ u1 zup x1 -> [u1] [x1] [x1] [u1] [u1] [x1] [x1] 
+ x1 gazzer x2 -> [x1] [x2] [x1] [x2] [x1] [x2] [x2] [x2] 
+ u1 x1 -> [u1] [x1] 
+ 

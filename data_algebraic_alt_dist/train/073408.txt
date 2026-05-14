@@ -1,0 +1,38 @@
+*SUPPORT*
+IN: dax tufa OUT: RED YELLOW
+IN: kiki OUT: PURPLE
+IN: dax blicket OUT: RED GREEN
+IN: dax kiki kiki OUT: RED PURPLE PURPLE
+IN: dax kiki blicket OUT: RED PURPLE GREEN
+IN: tufa dax OUT: YELLOW RED
+IN: tufa dax dax OUT: YELLOW RED RED
+IN: tufa blicket tufa OUT: YELLOW GREEN YELLOW
+IN: blicket dax dax kiki OUT: GREEN RED RED PURPLE
+IN: dax zup tufa OUT: YELLOW RED YELLOW RED YELLOW RED YELLOW YELLOW
+IN: blicket tufa OUT: GREEN YELLOW
+IN: blicket lug OUT: GREEN GREEN GREEN GREEN GREEN GREEN
+IN: tufa blicket OUT: YELLOW GREEN
+IN: tufa lug OUT: YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW
+
+*QUERY*
+IN: kiki lug OUT: PURPLE PURPLE PURPLE PURPLE PURPLE PURPLE
+IN: dax OUT: RED
+IN: blicket OUT: GREEN
+IN: tufa OUT: YELLOW
+IN: blicket kiki OUT: GREEN PURPLE
+IN: blicket blicket OUT: GREEN GREEN
+IN: blicket dax OUT: GREEN RED
+IN: kiki dax OUT: PURPLE RED
+IN: kiki kiki OUT: PURPLE PURPLE
+IN: dax lug OUT: RED RED RED RED RED RED
+
+*GRAMMAR*
+tufa -> YELLOW 
+ blicket -> GREEN 
+ kiki -> PURPLE 
+ dax -> RED 
+ x1 zup x2 -> [x2] [x1] [x2] [x1] [x2] [x1] [x2] [x2] 
+ x1 lug -> [x1] [x1] [x1] [x1] [x1] [x1] 
+ u1 wif u2 -> [u2] [u1] [u1] [u2] [u2] [u2] [u1] [u1] [u1] 
+ u1 x1 -> [u1] [x1] 
+ 
